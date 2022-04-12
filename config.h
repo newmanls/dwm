@@ -6,7 +6,6 @@ static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka Nerd Font-10" };
-static const char dmenufont[]       = "Iosevka Nerd Font-10";
 static const char col_gray1[]       = "#1a1b26";
 static const char col_gray2[]       = "#24283b";
 static const char col_gray3[]       = "#414868";
@@ -72,17 +71,17 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0";
 
 /* commands */
-static const char *dmenucmd[]   = { "dmenu_run_i",         NULL };
-static const char *termcmd[]    = { "st",                  NULL };
+static const char *dmenucmd[]   = { "dmenu_run_i", NULL };
+static const char *termcmd[]    = { "st", NULL };
 static const char *ncmpcpp[]    = { "st", "-e", "ncmpcpp", NULL };
-static const char *firefox[]    = { "firefox",             NULL };
-static const char *qalculate[]  = { "qalculate-gtk",       NULL };
-static const char *volup[]      = { "pamixer", "-i", "10", NULL };
-static const char *voldown[]    = { "pamixer", "-d", "10", NULL };
-static const char *volmute[]    = { "pamixer", "-t",       NULL };
-static const char *maim[]       = { "dmenu_maim",          NULL };
-static const char *session[]    = { "dmenu_power",         NULL };
-static const char *emoji[]      = { "emojipick",           NULL };
+static const char *firefox[]    = { "firefox", NULL };
+static const char *qalculate[]  = { "qalculate-gtk", NULL };
+static const char *volup[]      = { "pamixer", "-ui", "10", NULL };
+static const char *voldown[]    = { "pamixer", "-ud", "10", NULL };
+static const char *volmute[]    = { "pamixer", "-t", NULL };
+static const char *maim[]       = { "dmenu_maim", NULL };
+static const char *session[]    = { "dmenu_power", NULL };
+static const char *emoji[]      = { "emojipick", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
