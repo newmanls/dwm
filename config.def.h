@@ -14,7 +14,7 @@ static const char col_accent[]      = "#bb9af7";
 static const char *colors[][3]      = {
         /*               fg          bg          border   */
         [SchemeNorm] = { col_gray4,  col_gray1,  col_gray2 },
-        [SchemeSel]  = { col_gray4,  col_gray2,  col_accent  },
+        [SchemeSel]  = { col_accent, col_gray2,  col_accent  },
 };
 
 /* tagging */
@@ -29,15 +29,11 @@ static const Rule rules[] = {
         { "st",             NULL,       NULL,           1 << 0,     0,      -1 },
         { "firefox",        NULL,       NULL,           1 << 1,     0,      -1 },
         { "Soffice",        NULL,       NULL,           1 << 2,     0,      -1 },
-        { NULL,             NULL,       "LibreOffice",  1 << 2,     0,      -1 },
-        { "Gimp",           NULL,       NULL,           1 << 3,     0,      -1 },
-        { "Inkscape",       NULL,       NULL,           1 << 3,     0,      -1 },
-        { "discord",        NULL,       NULL,           1 << 4,     0,      -1 },
+        { "Gimp",           NULL,       NULL,           1 << 2,     0,      -1 },
+        { "Inkscape",       NULL,       NULL,           1 << 2,     0,      -1 },
+        { "discord",        NULL,       NULL,           1 << 3,     0,      -1 },
 
-        { NULL,             NULL,       "ncmpcpp",      ~0,         1,      -1 },
         { "firefox",        "Toolkit",  NULL,           ~0,         1,      -1 },
-        { "Nsxiv",          NULL,       NULL,           0,          1,      -1 },
-        { "mpv",            NULL,       NULL,           0,          1,      -1 },
         { "Qalculate-gtk",  NULL,       NULL,           0,          1,      -1 },
         { "mGBA",           NULL,       NULL,           0,          1,      -1 },
 };
@@ -71,35 +67,31 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0";
 
 /* commands */
-static const char *dmenucmd[]   = { "dmenu_run_i", NULL };
-static const char *termcmd[]    = { "st", NULL };
-static const char *ncmpcpp[]    = { "st", "-e", "ncmpcpp", NULL };
-static const char *firefox[]    = { "firefox", NULL };
-static const char *qalculate[]  = { "qalculate-gtk", NULL };
-static const char *volmute[]    = { "pamixer", "-t", NULL };
-static const char *voldown[]    = { "pamixer", "-ud", "10", NULL };
-static const char *volup[]      = { "pamixer", "-ui", "10", NULL };
-static const char *lightdown[]  = { "xbacklight", "-dec", "10", NULL };
-static const char *lightup[]    = { "xbacklight", "-inc", "10", NULL };
-static const char *maim[]       = { "dmenu_maim", NULL };
-static const char *session[]    = { "dmenu_session", NULL };
-static const char *emoji[]      = { "emojipick", NULL };
+static const char *dmenucmd[]      = { "dmenu_run_i", NULL };
+static const char *termcmd[]       = { "st", NULL };
+static const char *firefox[]       = { "firefox", NULL };
+static const char *qalculate[]     = { "qalculate-gtk", NULL };
+static const char *volmute[]       = { "notify-pamixer", "mute", NULL };
+static const char *voldown[]       = { "notify-pamixer", "down", NULL };
+static const char *volup[]         = { "notify-pamixer", "up", NULL };
+static const char *dmenu_maim[]    = { "dmenu_maim", NULL };
+static const char *dmenu_session[] = { "dmenu_session", NULL };
+static const char *dmenu_emoji[]   = { "emojipick", NULL };
+static const char *dmenu_gba[]     = { "dmenu_gba", NULL };
 
 static Key keys[] = {
         /* modifier                     key        function        argument */
         { MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
         { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-        { MODKEY,                       XK_p,      spawn,          {.v = ncmpcpp } },
         { MODKEY,                       XK_w,      spawn,          {.v = firefox } },
         { MODKEY,                       XK_c,      spawn,          {.v = qalculate } },
         { MODKEY,                       XK_0,      spawn,          {.v = volmute } },
         { MODKEY,                       XK_minus,  spawn,          {.v = voldown } },
         { MODKEY,                       XK_equal,  spawn,          {.v = volup } },
-        { MODKEY|ShiftMask,             XK_minus,  spawn,          {.v = lightdown } },
-        { MODKEY|ShiftMask,             XK_equal,  spawn,          {.v = lightup } },
-        { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = maim } },
-        { MODKEY,                       XK_Escape, spawn,          {.v = session } },
-        { ALTKEY,                       XK_space,  spawn,          {.v = emoji } },
+        { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = dmenu_maim } },
+        { MODKEY,                       XK_Escape, spawn,          {.v = dmenu_session } },
+        { MODKEY|ALTKEY,                XK_space,  spawn,          {.v = dmenu_emoji } },
+        { MODKEY|ALTKEY,                XK_g,      spawn,          {.v = dmenu_gba } },
         { MODKEY,                       XK_b,      togglebar,      {0} },
         { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
         { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -107,7 +99,7 @@ static Key keys[] = {
         { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
         { MODKEY,                       XK_h,      setmfact,       {.f = -0.01} },
         { MODKEY,                       XK_l,      setmfact,       {.f = +0.01} },
-        { MODKEY|ShiftMask,             XK_h,      zoom,           {0} },
+        { MODKEY,                       XK_g,      zoom,           {0} },
         { MODKEY,                       XK_Tab,    view,           {0} },
         { MODKEY,                       XK_q,      killclient,     {0} },
         { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
