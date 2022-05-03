@@ -3,9 +3,8 @@
 
 ![dwm desktop screenshot](screenshot.png)
 
-## Table Of Content
+## Table of Content
 
-* [Table Of Content](#table-of-content)
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Running dwm with startx](#running-dwm-with-startx)
