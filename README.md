@@ -65,3 +65,4 @@ Some patches have been applied based on my personal taste:
 - [notitle-20210715-138b405](https://dwm.suckless.org/patches/notitle/)
 - [pertag-togglelayout-6.3_full](https://github.com/bakkeby/patches/blob/master/dwm/dwm-pertag-togglelayout-6.3_full.diff)
 - [removeborder-20200520-f09418b](https://dwm.suckless.org/patches/removeborder/)
+- [swallow-20201211-61bb8b2](https://dwm.suckless.org/patches/swallow/)

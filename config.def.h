@@ -3,6 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 8;        /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka Nerd Font-9" };
@@ -25,20 +26,20 @@ static const Rule rules[] = {
          *      WM_CLASS(STRING) = instance, class
          *      WM_NAME(STRING) = title
          */
-        /* class            instance    title           tags mask   float   monitor */
-        { "st",             NULL,       NULL,           1 << 0,     0,      -1 },
-        { "firefox",        NULL,       NULL,           1 << 1,     0,      -1 },
-        { "Soffice",        NULL,       NULL,           1 << 2,     0,      -1 },
-        { NULL,             NULL,       "LibreOffice",  1 << 2,     0,      -1 },
-        { "Gimp",           NULL,       NULL,           1 << 2,     0,      -1 },
-        { "Inkscape",       NULL,       NULL,           1 << 2,     0,      -1 },
-        { "discord",        NULL,       NULL,           1 << 3,     0,      -1 },
+        /* class            instance    title           tags mask   float   isterm    noswallow monitor */
+        { "st",             NULL,       NULL,           1 << 0,     0,      1,        0,        -1 },
+        { "firefox",        NULL,       NULL,           1 << 1,     0,      0,        0,        -1 },
+        { "Soffice",        NULL,       NULL,           1 << 2,     0,      0,        0,        -1 },
+        { NULL,             NULL,       "LibreOffice",  1 << 2,     0,      0,        0,        -1 },
+        { "Gimp",           NULL,       NULL,           1 << 2,     0,      0,        0,        -1 },
+        { "Inkscape",       NULL,       NULL,           1 << 2,     0,      0,        0,        -1 },
+        { "discord",        NULL,       NULL,           1 << 3,     0,      0,        0,        -1 },
 
-        { "firefox",        "Toolkit",  NULL,           ~0,         1,      -1 },
-        { "mpv",            NULL,       NULL,           ~0,         1,      -1 },
-        { "Nsxiv",          NULL,       NULL,           ~0,         1,      -1 },
-        { "Qalculate-gtk",  NULL,       NULL,           0,          1,      -1 },
-        { "mGBA",           NULL,       NULL,           0,          1,      -1 },
+        { "firefox",        "Toolkit",  NULL,           ~0,         1,      0,        0,        -1 },
+        { "mpv",            NULL,       NULL,           ~0,         1,      0,        0,        -1 },
+        { "Nsxiv",          NULL,       NULL,           ~0,         1,      0,        0,        -1 },
+        { "Qalculate-gtk",  NULL,       NULL,           0,          1,      0,        0,        -1 },
+        { "mGBA",           NULL,       NULL,           0,          1,      0,        0,        -1 },
 };
 
 /* layout(s) */
