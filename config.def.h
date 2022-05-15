@@ -36,8 +36,9 @@ static const Rule rules[] = {
         { "discord",        NULL,       NULL,           1 << 3,     0,      0,        0,        -1 },
 
         { "firefox",        "Toolkit",  NULL,           ~0,         1,      0,        0,        -1 },
-        { "mpv",            NULL,       NULL,           ~0,         1,      0,        0,        -1 },
-        { "Nsxiv",          NULL,       NULL,           ~0,         1,      0,        0,        -1 },
+        { "firefox",        NULL,       "Library",      0,          1,      0,        0,        -1 },
+        { "mpv",            NULL,       NULL,           0,          1,      0,        0,        -1 },
+        { "Nsxiv",          NULL,       NULL,           0,          1,      0,        0,        -1 },
         { "Qalculate-gtk",  NULL,       NULL,           0,          1,      0,        0,        -1 },
         { "mGBA",           NULL,       NULL,           0,          1,      0,        0,        -1 },
 };
