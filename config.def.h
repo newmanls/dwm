@@ -84,7 +84,7 @@ static const char *volup[]         = { "notify-pamixer", "up", NULL };
 static const char *dmenu_maim[]    = { "dmenu_maim", NULL };
 static const char *dmenu_session[] = { "dmenu_session", NULL };
 static const char *dmenu_emoji[]   = { "emojipick", NULL };
-static const char *dmenu_gba[]     = { "dmenu_gba", NULL };
+static const char *dmenu_emu[]     = { "dmenu_emu", NULL };
 static const char *dmenu_mount[]   = { "dmenu_mount", NULL };
 static const char *dmenu_unmount[] = { "dmenu_unmount", NULL };
 
@@ -102,7 +102,7 @@ static Key keys[] = {
         { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = dmenu_maim } },
         { MODKEY,                       XK_Escape, spawn,          {.v = dmenu_session } },
         { MODKEY|ALTKEY,                XK_space,  spawn,          {.v = dmenu_emoji } },
-        { MODKEY|ALTKEY,                XK_g,      spawn,          {.v = dmenu_gba } },
+        { MODKEY|ALTKEY,                XK_g,      spawn,          {.v = dmenu_emu } },
         { MODKEY|ALTKEY,                XK_m,      spawn,          {.v = dmenu_mount } },
         { MODKEY|ALTKEY,                XK_u,      spawn,          {.v = dmenu_unmount } },
         { MODKEY,                       XK_b,      togglebar,      {0} },
