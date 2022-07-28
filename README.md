@@ -62,7 +62,10 @@ custom `config.h` and (re)compiling the source code.
 Some patches have been applied based on my personal taste:
 
 - [alwayscenter-20200625-f04cac6](https://dwm.suckless.org/patches/alwayscenter/)
+- [attachbelow-6.2](https://dwm.suckless.org/patches/attachbelow/)
+- [movestack-20211115-a786211](https://dwm.suckless.org/patches/movestack/)
 - [notitle-20210715-138b405](https://dwm.suckless.org/patches/notitle/)
 - [pertag-togglelayout-6.3_full](https://github.com/bakkeby/patches/blob/master/dwm/dwm-pertag-togglelayout-6.3_full.diff)
 - [removeborder-20200520-f09418b](https://dwm.suckless.org/patches/removeborder/)
 - [swallow-20201211-61bb8b2](https://dwm.suckless.org/patches/swallow/)
+- [xresources-20210827-138b405](https://dwm.suckless.org/patches/xresources/)

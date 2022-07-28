@@ -7,16 +7,18 @@ static const unsigned int snap      = 8;        /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Nerd Font-9" };
-static const char col_gray1[]       = "#1a1b26";
-static const char col_gray2[]       = "#24283b";
-static const char col_gray3[]       = "#414868";
-static const char col_gray4[]       = "#c0caf5";
-static const char col_accent[]      = "#bb9af7";
-static const char *colors[][3]      = {
-        /*               fg          bg          border   */
-        [SchemeNorm] = { col_gray4,  col_gray1,  col_gray2 },
-        [SchemeSel]  = { col_accent, col_gray2,  col_accent  },
+static char font[]                  = "monospace:size=10";
+static const char *fonts[]          = { font };
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
+static char normfgcolor[]           = "#bbbbbb";
+static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[]        = "#005577";
+static char selbgcolor[]            = "#005577";
+static char *colors[][3] = {
+        /*               fg           bg           border   */
+        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 /* tagging */
@@ -157,3 +159,15 @@ static Button buttons[] = {
         { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+        { "font",         STRING,  &font },
+        { "color0",       STRING,  &normbgcolor },
+        { "color0",       STRING,  &normbordercolor },
+        { "foreground",   STRING,  &normfgcolor },
+        { "background",   STRING,  &selbgcolor },
+        { "accentColor",  STRING,  &selbordercolor },
+        { "foreground",   STRING,  &selfgcolor },
+};
