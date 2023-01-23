@@ -21,6 +21,14 @@ static char *colors[][3] = {
         [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+static const char *const autostart[] = {
+        "setxkbmap", "us", "altgr-intl", NULL,
+        "setbg", NULL,
+        "sxhkd", NULL,
+        "dwmsb", "cmus", "volume", "wifi", "date", NULL,
+        NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "I", "II", "III", "IV", "V" };
 
