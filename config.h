@@ -21,9 +21,9 @@ static char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
-        "setbg", NULL,
         "sxhkd", NULL,
-        "dwmsb", "cmus", "volume", "battery", "wifi", "date", NULL,
+        ".local/bin/setbg", NULL,
+        ".local/bin/dwmsb.py", NULL,
         NULL /* terminate */
 };
 
