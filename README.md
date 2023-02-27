@@ -62,6 +62,7 @@ custom `config.h` and (re)compiling the source code.
 Some patches have been applied based on my personal taste:
 
 - [alwayscenter-20200625-f04cac6](https://dwm.suckless.org/patches/alwayscenter/)
+- [attachbottom-6.3](https://dwm.suckless.org/patches/attachbottom/)
 - [cool-autostart-6.2](https://dwm.suckless.org/patches/cool_autostart/)
 - [notitle-20210715-138b405](https://dwm.suckless.org/patches/notitle/)
 - [pertag-togglelayout-6.3_full](https://github.com/bakkeby/patches/blob/master/dwm/dwm-pertag-togglelayout-6.3_full.diff)
