@@ -68,39 +68,89 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", NULL };
+static const char *dmenucmd[] = { "dmenu-run-i", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	// { MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
-	// { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_i,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_d,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_h,      zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_f,      togglefloating, {0} },
-	{ MODKEY,                       XK_9,      view,           {.ui = ~0 } },
-	{ MODKEY,                       XK_s,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
+	/* modifier                     key         function        argument */
+	{ MODKEY|ShiftMask,             XK_Escape,  spawn,          {.v = (const char*[]){"dmenu-session", NULL}} },
+	TAGKEYS(                        XK_1,                       0)
+	TAGKEYS(                        XK_2,                       1)
+	TAGKEYS(                        XK_3,                       2)
+	TAGKEYS(                        XK_4,                       3)
+	TAGKEYS(                        XK_5,                       4)
+	{ MODKEY,                       XK_9,       view,           {.ui = ~0 } },
+	{ MODKEY,                       XK_0,       spawn,          {.v = (const char*[]){"notify-pulse", "mute", NULL}} },
+	// { MODKEY|ShiftMask,             XK_0,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_minus,   spawn,          {.v = (const char*[]){"notify-pulse", "down", NULL}} },
+	{ MODKEY|ShiftMask,             XK_minus,   spawn,          {.v = (const char*[]){"notify-backlight", "down", NULL}} },
+	{ MODKEY,                       XK_equal,   spawn,          {.v = (const char*[]){"notify-pulse", "up", NULL}} },
+	{ MODKEY|ShiftMask,             XK_equal,   spawn,          {.v = (const char*[]){"notify-backlight", "up", NULL}} },
+
+	{ MODKEY,                       XK_Tab,     view,           {0} },
+	{ MODKEY,                       XK_q,       killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,       spawn,          {.v = (const char*[]){"xdotool", "getwindowfocus", "windowkill", NULL}} },
+	{ MODKEY,                       XK_w,       spawn,          {.v = (const char*[]){"firefox", NULL}} },
+	// { MODKEY|ShiftMask,             XK_w,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_e,       spawn,          {.v = (const char*[]){"st","-e", "lfub", NULL}} },
+	{ MODKEY|ShiftMask,             XK_e,       spawn,          {.v = (const char*[]){"dmenu-emoji", NULL}} },
+	// { MODKEY,                       XK_r,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_r,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_t,       setlayout,      {.v = &layouts[0]} },
+	// { MODKEY|ShiftMask,             XK_t,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY,                       XK_y,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_y,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY,                       XK_u,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY|ShiftMask,             XK_u,       spawn,          {.v = (const char*[]){"dmenu-disks", "unmount", NULL}} },
+	{ MODKEY,                       XK_i,       incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_i,       setmfact,       {.f = +0.05} },
+	// { MODKEY,                       XK_o,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_o,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_p,       spawn,          {.v = (const char*[]){"st", "-e", "cmus", NULL}} },
+	// { MODKEY|ShiftMask,             XK_p,       spawn,          {.v = (const char*[]){"", NULL}} },
+
+	// { MODKEY,                       XK_a,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_a,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_s,       tag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_s,       spawn,          {.v = (const char*[]){"dmenu-screenshot", NULL}} },
+	{ MODKEY,                       XK_d,       incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_d,       setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_f,       togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,       setlayout,      {.v = &layouts[1]} },
+	// { MODKEY,                       XK_g,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_g,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY,                       XK_h,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_h,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_j,       focusstack,     {.i = +1 } },
+	// { MODKEY|ShiftMask,             XK_j,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_k,       focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_k,       zoom,           {0} },
+	// { MODKEY,                       XK_l,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_l,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_Return,  spawn,          {.v = termcmd } },
+	// { MODKEY|ShiftMask,             XK_Return,  spawn,          {.v = (const char*[]){"", NULL}} },
+
+	// { MODKEY,                       XK_z,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_z,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY,                       XK_x,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_x,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_c,       spawn,          {.v = (const char*[]){"qalculate-gtk", NULL}} },
+	{ MODKEY|ShiftMask,             XK_c,       spawn,          {.v = (const char*[]){"dmenu-nm", NULL}} },
+	// { MODKEY,                       XK_v,       spawn,          {.v = (const char*[]){"", NULL}} },
+	// { MODKEY|ShiftMask,             XK_v,       spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY,                       XK_b,       togglebar,      {0} },
+	// { MODKEY|ShiftMask,             XK_b,       spawn,          {.v = (const char*[]){"", NULL}} },
+        { MODKEY,                       XK_n,       spawn,          {.v = (const char*[]){"st", "-e", "newsboat", NULL}} },
+	{ MODKEY|ShiftMask,             XK_n,       spawn,          {.v = (const char*[]){"st", "-e", "podboat", NULL}} },
+	{ MODKEY,                       XK_m,       setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_m,       spawn,          {.v = (const char*[]){"dmenu-disks", "mount", NULL}} },
+	{ MODKEY,                       XK_comma,   focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,   tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_period,  focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period,  tagmon,         {.i = +1 } },
+
+	{ MODKEY,                       XK_space,   spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_space,   spawn,          {.v = (const char*[]){"rofi", "-show", "drun", NULL}} },
 };
 
 /* button definitions */
