@@ -70,6 +70,8 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu-run-i", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x34", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key         function        argument */
@@ -131,7 +133,7 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_l,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_l,       spawn,          {.v = (const char*[]){"", NULL}} },
 	{ MODKEY,                       XK_Return,  spawn,          {.v = termcmd } },
-	// { MODKEY|ShiftMask,             XK_Return,  spawn,          {.v = (const char*[]){"", NULL}} },
+	{ MODKEY|ShiftMask,             XK_Return,  togglescratch,  {.v = scratchpadcmd } },
 
 	// { MODKEY,                       XK_z,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_z,       spawn,          {.v = (const char*[]){"", NULL}} },
