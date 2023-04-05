@@ -108,11 +108,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_i,       setmfact,       {.f = +0.05} },
 	// { MODKEY,                       XK_o,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_o,       spawn,          {.v = (const char*[]){"", NULL}} },
-	{ MODKEY,                       XK_p,       spawn,          {.v = (const char*[]){"st", "-e", "cmus", NULL}} },
+        { MODKEY,                       XK_p,       spawn,          SHCMD("if pidof -sq cmus; then cmus-remote --pause; else st -e cmus; fi")},
 	// { MODKEY|ShiftMask,             XK_p,       spawn,          {.v = (const char*[]){"", NULL}} },
         { MODKEY,                       XK_bracketleft,  spawn,     {.v = (const char*[]){"cmus-remote", "--prev", NULL}} },
         { MODKEY,                       XK_bracketright, spawn,     {.v = (const char*[]){"cmus-remote", "--next", NULL}} },
-        { MODKEY,                       XK_backslash,    spawn,     {.v = (const char*[]){"cmus-remote", "--pause", NULL}} },
+        // { MODKEY,                       XK_backslash,    spawn,     {.v = (const char*[]){"", NULL}} },
 
 	// { MODKEY,                       XK_a,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_a,       spawn,          {.v = (const char*[]){"", NULL}} },
