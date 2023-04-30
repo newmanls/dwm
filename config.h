@@ -83,12 +83,12 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_4,                       3)
 	TAGKEYS(                        XK_5,                       4)
 	{ MODKEY,                       XK_9,       view,           {.ui = ~0 } },
-	{ MODKEY,                       XK_0,       spawn,          {.v = (const char*[]){"notify-pulse", "mute", NULL}} },
+	{ MODKEY,                       XK_0,       spawn,          {.v = (const char*[]){"pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL}} },
 	// { MODKEY|ShiftMask,             XK_0,       spawn,          {.v = (const char*[]){"", NULL}} },
-	{ MODKEY,                       XK_minus,   spawn,          {.v = (const char*[]){"notify-pulse", "down", NULL}} },
-	{ MODKEY|ShiftMask,             XK_minus,   spawn,          {.v = (const char*[]){"notify-backlight", "down", NULL}} },
-	{ MODKEY,                       XK_equal,   spawn,          {.v = (const char*[]){"notify-pulse", "up", NULL}} },
-	{ MODKEY|ShiftMask,             XK_equal,   spawn,          {.v = (const char*[]){"notify-backlight", "up", NULL}} },
+	{ MODKEY,                       XK_minus,   spawn,          {.v = (const char*[]){"pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL}} },
+	{ MODKEY|ShiftMask,             XK_minus,   spawn,          {.v = (const char*[]){"xbacklight", "-dec", "10", NULL}} },
+	{ MODKEY,                       XK_equal,   spawn,          {.v = (const char*[]){"pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL}} },
+	{ MODKEY|ShiftMask,             XK_equal,   spawn,          {.v = (const char*[]){"xbacklight", "-inc", "10", NULL}} },
 
 	{ MODKEY,                       XK_Tab,     view,           {0} },
 	{ MODKEY,                       XK_q,       killclient,     {0} },
