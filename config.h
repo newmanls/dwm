@@ -20,6 +20,20 @@ static char *colors[][3] = {
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-c", "spterm", "-g", "160x34", NULL };
+const char *spcmd2[] = {"st", "-c", "spmusic", "-g", "160x34", "-e", "cmus", NULL };
+const char *spcmd3[] = {"st", "-c", "spcalc", "-g", "56x8", "-f", "monospace:size=12", "-e", "bc", "-lq", NULL};
+static Sp scratchpads[] = {
+	/* name         cmd  */
+	{"spterm",      spcmd1},
+	{"spmusic",     spcmd2},
+        {"spcalc",      spcmd3},
+};
+
 /* tagging */
 static const char *tags[] = { "I", "II", "III", "IV", "V" };
 
@@ -35,13 +49,12 @@ static const Rule rules[] = {
 	{ NULL,	           NULL,      "LibreOffice",  1 << 2,    0,          0,           0,        -1 },
 	{ "Gimp",          NULL,      NULL,           1 << 2,    0,          0,           0,        -1 },
 	{ "Inkscape",      NULL,      NULL,           1 << 2,    0,          0,           0,        -1 },
-	{ "cmus",          NULL,      NULL,           1 << 4,    0,          1,           0,        -1 },
-	{ "firefox",       "Toolkit", NULL,           ~0,        1,          0,           0,	    -1 },
-	{ "firefox",       NULL,      "Library",      0,         1,          0,           0,	    -1 },
 	{ "mpv",           NULL,      NULL,           0,         1,          0,           0,	    -1 },
 	{ "Nsxiv",         NULL,      NULL,           0,         1,          0,           0,	    -1 },
-	{ "Qalculate-gtk", NULL,      NULL,           0,         1,          0,           0,	    -1 },
-	{ NULL,		   NULL,      "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,            NULL,      "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ "spterm",        NULL,      NULL,           SPTAG(0),  1,          1,           1,        -1 },
+	{ "spmusic",       NULL,      NULL,           SPTAG(1),  1,          1,           1,        -1 },
+	{ "spcalc",        NULL,      NULL,           SPTAG(2),  1,          1,           1,        -1 },
 };
 
 /* layout(s) */
@@ -71,8 +84,6 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu-run-i", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x34", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key         function        argument */
@@ -109,11 +120,11 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_i,       setmfact,       {.f = +0.05} },
 	// { MODKEY,                       XK_o,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_o,       spawn,          {.v = (const char*[]){"", NULL}} },
-        { MODKEY,                       XK_p,       spawn,          SHCMD("if pidof -sq cmus; then cmus-remote --pause; else st -c cmus -e cmus; fi")},
+        { MODKEY,                       XK_p,       togglescratch,  {.ui = 1} },
 	// { MODKEY|ShiftMask,             XK_p,       spawn,          {.v = (const char*[]){"", NULL}} },
         { MODKEY,                       XK_bracketleft,  spawn,     {.v = (const char*[]){"cmus-remote", "--prev", NULL}} },
         { MODKEY,                       XK_bracketright, spawn,     {.v = (const char*[]){"cmus-remote", "--next", NULL}} },
-        // { MODKEY,                       XK_backslash,    spawn,     {.v = (const char*[]){"", NULL}} },
+        { MODKEY,                       XK_backslash,    spawn,     {.v = (const char*[]){"cmus-remote", "--pause", NULL}} },
 
 	// { MODKEY,                       XK_a,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_a,       spawn,          {.v = (const char*[]){"", NULL}} },
@@ -134,13 +145,13 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_l,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_l,       spawn,          {.v = (const char*[]){"", NULL}} },
 	{ MODKEY,                       XK_Return,  spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,  togglescratch,  {.ui = 0} },
 
 	// { MODKEY,                       XK_z,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_z,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY,                       XK_x,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_x,       spawn,          {.v = (const char*[]){"", NULL}} },
-	{ MODKEY,                       XK_c,       spawn,          {.v = (const char*[]){"qalculate-gtk", NULL}} },
+	{ MODKEY,                       XK_c,       togglescratch,  {.ui = 2} },
 	{ MODKEY|ShiftMask,             XK_c,       spawn,          {.v = (const char*[]){"dmenu-nm", NULL}} },
 	// { MODKEY,                       XK_v,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_v,       spawn,          {.v = (const char*[]){"", NULL}} },
