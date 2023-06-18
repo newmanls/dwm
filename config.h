@@ -51,10 +51,11 @@ static const Rule rules[] = {
 	{ "Inkscape",      NULL,      NULL,           1 << 2,    0,          0,           0,        -1 },
 	{ "mpv",           NULL,      NULL,           0,         1,          0,           0,	    -1 },
 	{ "Nsxiv",         NULL,      NULL,           0,         1,          0,           0,	    -1 },
+	{ "st-floating",   NULL,      NULL,           0,         1,          1,           0,	    -1 },
+	{ "spterm",        NULL,      NULL,           SPTAG(0),  1,          1,           0,        -1 },
+	{ "spmusic",       NULL,      NULL,           SPTAG(1),  1,          1,           0,        -1 },
+	{ "spcalc",        NULL,      NULL,           SPTAG(2),  1,          1,           0,        -1 },
 	{ NULL,            NULL,      "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ "spterm",        NULL,      NULL,           SPTAG(0),  1,          1,           1,        -1 },
-	{ "spmusic",       NULL,      NULL,           SPTAG(1),  1,          1,           1,        -1 },
-	{ "spcalc",        NULL,      NULL,           SPTAG(2),  1,          1,           1,        -1 },
 };
 
 /* layout(s) */
@@ -152,7 +153,7 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_x,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_x,       spawn,          {.v = (const char*[]){"", NULL}} },
 	{ MODKEY,                       XK_c,       togglescratch,  {.ui = 2} },
-	{ MODKEY|ShiftMask,             XK_c,       spawn,          {.v = (const char*[]){"dmenu-nm", NULL}} },
+	{ MODKEY|ShiftMask,             XK_c,       spawn,          {.v = (const char*[]){"st", "-c", "st-floating", "-e", "nmtui-connect", NULL}} },
 	// { MODKEY,                       XK_v,       spawn,          {.v = (const char*[]){"", NULL}} },
 	// { MODKEY|ShiftMask,             XK_v,       spawn,          {.v = (const char*[]){"", NULL}} },
 	{ MODKEY,                       XK_b,       togglebar,      {0} },
