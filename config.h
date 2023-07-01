@@ -54,8 +54,6 @@ static const Rule rules[] = {
 	{ "spterm",        NULL,      NULL,           SPTAG(0),  1,          -1 },
 	{ "spmusic",       NULL,      NULL,           SPTAG(1),  1,          -1 },
 	{ "spcalc",        NULL,      NULL,           SPTAG(2),  1,          -1 },
-	{ NULL,            NULL,      "Event Tester", 0,         0,          -1 }, /* xev */
-	{ "Tk",            NULL,      NULL,           0,         1,          -1 },
 };
 
 /* layout(s) */
