@@ -121,9 +121,9 @@ static const Key keys[] = {
 	// { MODKEY|ShiftMask,             XK_o,       spawn,          SHCMD("") },
         { MODKEY,                       XK_p,       togglescratch,  {.ui = 1} },
 	// { MODKEY|ShiftMask,             XK_p,       spawn,          SHCMD("") },
-        { MODKEY,                       XK_bracketleft,  spawn,     SHCMD("cmus-remote --prev") },
-        { MODKEY,                       XK_bracketright, spawn,     SHCMD("cmus-remote --next") },
-        { MODKEY,                       XK_backslash,    spawn,     SHCMD("cmus-remote --pause") },
+        { MODKEY,                       XK_bracketleft,  spawn,     SHCMD("playerctl previous") },
+        { MODKEY,                       XK_bracketright, spawn,     SHCMD("playerctl next") },
+        { MODKEY,                       XK_backslash,    spawn,     SHCMD("playerctl play-pause") },
 
 	// { MODKEY,                       XK_a,       spawn,          SHCMD("") },
 	// { MODKEY|ShiftMask,             XK_a,       spawn,          SHCMD("") },
