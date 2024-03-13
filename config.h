@@ -104,7 +104,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,       killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,       spawn,          SHCMD("xdotool getwindowfocus windowkill") },
 	{ MODKEY,                       XK_w,       spawn,          SHCMD("firefox") },
-	// { MODKEY|ShiftMask,             XK_w,       spawn,          SHCMD("") },
+	{ MODKEY|ShiftMask,             XK_w,       spawn,          SHCMD("firefox --private-window") },
 	{ MODKEY,                       XK_e,       spawn,          SHCMD("st -e lfub") },
 	{ MODKEY|ShiftMask,             XK_e,       spawn,          SHCMD("dmenu-emoji") },
 	// { MODKEY,                       XK_r,       spawn,          SHCMD("") },
